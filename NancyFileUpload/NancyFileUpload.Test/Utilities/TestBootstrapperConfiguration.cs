@@ -31,5 +31,4 @@ namespace NancyFileUpload.Test.Utilities
             // Do not modify original pipeline ...
         }
     }
-
 }
