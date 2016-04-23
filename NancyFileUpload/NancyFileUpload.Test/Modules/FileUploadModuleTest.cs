@@ -3,18 +3,24 @@
 
 using Nancy;
 using Nancy.Bootstrapper;
+using Nancy.Responses.Negotiation;
 using Nancy.Testing;
+using NancyFileUpload.Bootstrapping;
+using NancyFileUpload.Bootstrapping.Configuration;
 using NancyFileUpload.Handlers;
 using NancyFileUpload.Infrastructure.Domain;
 using NancyFileUpload.Infrastructure.Errors.Enums;
+using NancyFileUpload.Infrastructure.Errors.Handler;
 using NancyFileUpload.Infrastructure.Errors.Model;
+using NancyFileUpload.Infrastructure.Errors.Specification.General;
 using NancyFileUpload.Infrastructure.Settings;
-using NancyFileUpload.Test.Bootstrapping;
 using NancyFileUpload.Test.Serialization;
 using NancyFileUpload.Test.Utilities;
 using NUnit.Framework;
 using Rhino.Mocks;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,22 +30,24 @@ namespace NancyFileUpload.Test.Modules
     [TestFixture]
     public class FileUploadModuleTest : FileSupportingTestBase
     {
-        private Bootstrapper bootstrapper;
+        private INancyBootstrapper bootstrapper;
 
         private IApplicationSettings applicationSettingsMock;
         private IFileUploadHandler fileUploadHandlerMock;
-        
+
         [SetUp]
-        public void SetUp() 
+        public void SetUp()
         {
-            applicationSettingsMock = MockRepository.GenerateStrictMock<IApplicationSettings>(); 
+            applicationSettingsMock = MockRepository.GenerateStrictMock<IApplicationSettings>();
             fileUploadHandlerMock = MockRepository.GenerateStrictMock<IFileUploadHandler>();
 
-            bootstrapper = new Bootstrapper(new[] 
-            {
-                new InstanceRegistration(typeof(IApplicationSettings), applicationSettingsMock),
-                new InstanceRegistration(typeof(IFileUploadHandler), fileUploadHandlerMock)
-            });
+            bootstrapper = new Bootstrapper(
+                new TestBootstrapperConfiguration(
+                    new InstanceRegistration[] 
+                    {
+                        new InstanceRegistration(typeof(IApplicationSettings), applicationSettingsMock),
+                        new InstanceRegistration(typeof(IFileUploadHandler), fileUploadHandlerMock)
+                    }));
         }
 
         [Test]
@@ -80,12 +88,12 @@ namespace NancyFileUpload.Test.Modules
                 .AppendLine("FirstName;LastName;BirthDate")
                 .AppendLine("Philipp;Wagner;1986/05/12")
                 .AppendLine("Max;Mustermann;2014/01/01");
-            
+
             // Create the File:
             Assert.AreEqual(true, Create(fileName, fileContent.ToString()));
 
             // The Result of the Upload (we are not writing to disk actually):
-            var fileUploadResult = new FileUploadResult() { Identifier = Guid.NewGuid().ToString()};
+            var fileUploadResult = new FileUploadResult() { Identifier = Guid.NewGuid().ToString() };
 
             // Checked in the Request Validation:
             applicationSettingsMock.Expect(x => x.MaxFileSizeForUpload)
@@ -99,13 +107,13 @@ namespace NancyFileUpload.Test.Modules
 
             // Pass the Bootstrapper with Mocks into the Testing Browser:
             var browser = new Browser(bootstrapper);
-            
+
             using (var textReader = new FileStream(GetAbsolutePath(fileName), FileMode.Open))
             {
 
                 // Define the Multipart Form Data for an upload:
                 var multipartFormData = new BrowserContextMultipartFormData(
-                    (configuration => 
+                    (configuration =>
                     {
                         configuration.AddFile("file", fileName, "text", textReader);
 

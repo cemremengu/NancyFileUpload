@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapping\Bootstrapper.cs" />
+    <Compile Include="Bootstrapping\Configuration\IBootstrapperConfiguration.cs" />
+    <Compile Include="Bootstrapping\Configuration\BootstrapperConfiguration.cs" />
     <Compile Include="Handlers\FileUploadResult.cs" />
     <Compile Include="Handlers\IFileUploadHandler.cs" />
     <Compile Include="Handlers\LocalStorageUploadHandler.cs" />

@@ -5,11 +5,9 @@ using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Responses.Negotiation;
 using Nancy.TinyIoc;
-using NancyFileUpload.Infrastructure.Domain;
+using NancyFileUpload.Bootstrapping.Configuration;
 using NancyFileUpload.Infrastructure.Errors.Handler;
 using NancyFileUpload.Infrastructure.Errors.Specification.General;
-using NancyFileUpload.Infrastructure.Settings;
-
 
 namespace NancyFileUpload.Bootstrapping
 {
@@ -26,16 +24,26 @@ namespace NancyFileUpload.Bootstrapping
             }
         }
 
+        private readonly IBootstrapperConfiguration configuration;
+
+        public Bootstrapper(IBootstrapperConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
+
         protected override void ConfigureApplicationContainer(TinyIoCContainer container)
         {
-            base.ConfigureApplicationContainer(container);
-
-            container.Register<IApplicationSettings>(new ApplicationSettings("uploads", FileSize.Create(2, FileSize.Unit.Megabyte)));
+            // Make custom registrations:
+            configuration.ConfigureApplicationContainer(container);
         }
 
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
         {
+            // Add the Common Error Handling Pipeline:
             CustomErrorHandler.Enable(pipelines, container.Resolve<IResponseNegotiator>(), ServiceErrors.GeneralServiceError);
+            
+            // Make custom registrations:
+            configuration.ConfigureRequestContainer(container, pipelines, context);
         }
     }
 }

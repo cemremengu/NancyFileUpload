@@ -66,7 +66,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrapping\Bootstrapper.cs" />
     <Compile Include="Handlers\LocalStorageUploadHandlerTest.cs" />
     <Compile Include="Infrastructure\Domain\FileSizeTest.cs" />
     <Compile Include="Infrastructure\Settings\ApplicationSettingsTest.cs" />
@@ -78,6 +77,7 @@
     <Compile Include="Serialization\JsonSerializer.cs" />
     <Compile Include="Serialization\XmlSerializer.cs" />
     <Compile Include="Utilities\FileSupportingTestBase.cs" />
+    <Compile Include="Utilities\TestBootstrapperConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
