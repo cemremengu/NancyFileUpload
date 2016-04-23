@@ -1,17 +1,12 @@
-﻿// Copyright (c) Philipp Wagner. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
-
-using Nancy;
+﻿using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Responses.Negotiation;
 using Nancy.TinyIoc;
-using NancyFileUpload.Infrastructure.Domain;
 using NancyFileUpload.Infrastructure.Errors.Handler;
 using NancyFileUpload.Infrastructure.Errors.Specification.General;
-using NancyFileUpload.Infrastructure.Settings;
+using System.Collections.Generic;
 
-
-namespace NancyFileUpload.Bootstrapping
+namespace NancyFileUpload.Test.Bootstrapping
 {
     public class Bootstrapper : DefaultNancyBootstrapper
     {
@@ -26,11 +21,21 @@ namespace NancyFileUpload.Bootstrapping
             }
         }
 
+        private readonly IEnumerable<InstanceRegistration> registrations;
+
+        public Bootstrapper(IEnumerable<InstanceRegistration> registrations)
+        {
+            this.registrations = registrations;
+        }
+
         protected override void ConfigureApplicationContainer(TinyIoCContainer container)
         {
             base.ConfigureApplicationContainer(container);
 
-            container.Register<IApplicationSettings>(new ApplicationSettings("uploads", FileSize.Create(2, FileSize.Unit.Megabyte)));
+            foreach (var registration in registrations)
+            {
+                container.Register(registration.RegistrationType, registration.Implementation);
+            }
         }
 
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
