@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using NancyFileUpload.Infrastructure.Domain;
+using System;
 
 namespace NancyFileUpload.Infrastructure.Settings
 {
@@ -12,6 +13,14 @@ namespace NancyFileUpload.Infrastructure.Settings
 
         public ApplicationSettings(string uploadDirectory, FileSize fileSize)
         {
+            if (uploadDirectory == null)
+            {
+                throw new ArgumentNullException("uploadDirectory");
+            }
+            if (fileSize == null)
+            {
+                throw new ArgumentNullException("fileSize");
+            }
             this.uploadDirectory = uploadDirectory;
             this.fileSize = fileSize;
         }

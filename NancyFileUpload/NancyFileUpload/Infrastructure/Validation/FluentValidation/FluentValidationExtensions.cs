@@ -14,13 +14,7 @@ namespace NancyFileUpload.Infrastructure.Validation.FluentValidation
         {
             return ruleBuilder.SetValidator(new LenthBetweenInclusiveBoundsValidator<TProperty>(min, max));
         }
-
-        public static IRuleBuilderOptions<T, string> IsAlphaNumeric<T>(this IRuleBuilder<T, string> ruleBuilder)
-        {
-            return ruleBuilder.SetValidator(new AlphaNumericValidator());
-        }
-
-
+        
         public static IRuleBuilderOptions<T, IList<TProperty>> All<T, TProperty>(this IRuleBuilder<T, IList<TProperty>> ruleBuilder, Func<TProperty, bool> predicate, string message)
             where TProperty : class
         {

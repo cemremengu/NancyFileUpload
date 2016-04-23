@@ -138,6 +138,10 @@ namespace NancyFileUpload.Test.Modules
 
                 Assert.AreEqual(deserializedResponseContent.Identifier, fileUploadResult.Identifier);
             }
+
+
+            // Finally delete the Temporary file:
+            Assert.AreEqual(true, Delete(fileName));
         }
     }
 }
