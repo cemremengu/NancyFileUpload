@@ -1,9 +1,8 @@
-﻿using Nancy.Hosting.Self;
+﻿// Copyright (c) Philipp Wagner. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using Nancy.Hosting.Self;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NancyFileUpload.Web
 {
@@ -11,10 +10,12 @@ namespace NancyFileUpload.Web
     {
         public static void Main(string[] args)
         {
-            using (var host = new NancyHost(new Uri("http://localhost:1234")))
+            var endpoint = "http://localhost:1234";
+            using (var host = new NancyHost(new Uri(endpoint)))
             {
                 host.Start();
 
+                Console.WriteLine("Server started on {0}...", endpoint);
                 Console.ReadLine();
             }
         }

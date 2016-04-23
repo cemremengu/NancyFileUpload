@@ -1,8 +1,10 @@
-﻿using Nancy;
+﻿// Copyright (c) Philipp Wagner. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Responses.Negotiation;
 using Nancy.TinyIoc;
-using NancyFileUpload.Handlers;
 using NancyFileUpload.Infrastructure.Domain;
 using NancyFileUpload.Infrastructure.Errors.Handler;
 using NancyFileUpload.Infrastructure.Errors.Specification.General;
