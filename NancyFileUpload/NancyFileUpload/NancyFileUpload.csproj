@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrapping\Bootstrapper.cs" />
     <Compile Include="Handlers\FileUploadResult.cs" />
     <Compile Include="Handlers\IFileUploadHandler.cs" />
     <Compile Include="Handlers\LocalStorageUploadHandler.cs" />

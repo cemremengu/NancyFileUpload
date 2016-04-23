@@ -37,6 +37,5 @@ namespace NancyFileUpload.Web
         {
             CustomErrorHandler.Enable(pipelines, container.Resolve<IResponseNegotiator>(), ServiceErrors.GeneralServiceError);
         }
-
     }
 }

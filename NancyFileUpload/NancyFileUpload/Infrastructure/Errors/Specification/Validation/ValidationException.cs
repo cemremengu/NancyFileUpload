@@ -1,13 +1,11 @@
-﻿using Nancy;
+﻿// Copyright (c) Philipp Wagner. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using Nancy;
 using NancyFileUpload.Infrastructure.Errors.Enums;
 using NancyFileUpload.Infrastructure.Errors.Exceptions;
 using NancyFileUpload.Infrastructure.Errors.Model;
 using NancyFileUpload.Infrastructure.Errors.Specification.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NancyFileUpload.Infrastructure.Exceptions.Validations
 {
