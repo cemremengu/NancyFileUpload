@@ -14,7 +14,7 @@ namespace NancyFileUpload.Infrastructure.Validation.FluentValidation
         private int max;
 
         public LenthBetweenInclusiveBoundsValidator(int min, int max)
-            : base(String.Format("Property {PropertyName} length is not between {0} and {1}!", min, max))
+            : base("Property {PropertyName} " + String.Format("length is not between {0} and {1}!", min, max))
         {
             this.min = min;
             this.max = max;
