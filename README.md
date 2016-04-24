@@ -3,7 +3,7 @@
 This project shows how to implement file uploads with [Nancy], which is "... a lightweight, low-ceremony, framework for building HTTP based services on .Net and Mono".
 
 I have used this project to experiment with Validation, Model Binding, Error Handling and Unit Tests with [Nancy]. So the project also shows how to bind complex 
-incoming requests, validate them with FluentValidation, how to provide a custom error handling pipeline and how to do implement full unit tests for Nancy modules.
+incoming requests, validate them with FluentValidation, how to provide a custom error handling pipeline and how to implement full unit tests for Nancy modules.
 
 ## NancyFileUpload.Web ##
 
