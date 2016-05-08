@@ -3,24 +3,18 @@
 
 using Nancy;
 using Nancy.Bootstrapper;
-using Nancy.Responses.Negotiation;
 using Nancy.Testing;
 using NancyFileUpload.Bootstrapping;
-using NancyFileUpload.Bootstrapping.Configuration;
 using NancyFileUpload.Handlers;
 using NancyFileUpload.Infrastructure.Domain;
 using NancyFileUpload.Infrastructure.Errors.Enums;
-using NancyFileUpload.Infrastructure.Errors.Handler;
 using NancyFileUpload.Infrastructure.Errors.Model;
-using NancyFileUpload.Infrastructure.Errors.Specification.General;
 using NancyFileUpload.Infrastructure.Settings;
 using NancyFileUpload.Test.Serialization;
 using NancyFileUpload.Test.Utilities;
 using NUnit.Framework;
 using Rhino.Mocks;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,7 +69,7 @@ namespace NancyFileUpload.Test.Modules
             var error = new JsonSerializer().Deserialize<ServiceErrorModel>(result);
 
             Assert.AreEqual(ServiceErrorEnum.ValidationError, error.Code);
-            Assert.AreEqual("Validation failed. Properties: (Title, Tags, File)", error.Details);
+            Assert.AreEqual("Validation failed for Request Parameters: (Parameter = Title, Errors = ('Title' must not be empty.), Parameter = Tags, Errors = (Length of the array is not between 1 and 5.), Parameter = File, Errors = ('File' must not be empty.))", error.Details);
         }
 
         [Test]

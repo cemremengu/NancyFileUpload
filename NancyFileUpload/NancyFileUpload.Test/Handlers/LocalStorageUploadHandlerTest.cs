@@ -1,15 +1,14 @@
-﻿using Nancy;
+﻿// Copyright (c) Philipp Wagner. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using Nancy;
 using NancyFileUpload.Handlers;
 using NancyFileUpload.Infrastructure.Settings;
 using NancyFileUpload.Test.Utilities;
 using NUnit.Framework;
 using Rhino.Mocks;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace NancyFileUpload.Test.Handlers
 {
@@ -35,7 +34,7 @@ namespace NancyFileUpload.Test.Handlers
         {
             rootPathProviderMock.Expect(x => x.GetRootPath())
                 .Repeat.Once()
-                .Return(AppDomain.CurrentDomain.BaseDirectory);
+                .Return(GetBasePath());
 
             applicationSettingsMock.Expect(x => x.FileUploadDirectory)
                 .Repeat.Once()

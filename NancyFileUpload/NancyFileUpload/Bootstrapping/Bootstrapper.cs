@@ -7,7 +7,7 @@ using Nancy.Responses.Negotiation;
 using Nancy.TinyIoc;
 using NancyFileUpload.Bootstrapping.Configuration;
 using NancyFileUpload.Infrastructure.Errors.Handler;
-using NancyFileUpload.Infrastructure.Errors.Specification.General;
+using NancyFileUpload.Infrastructure.Errors.Specification.Errors;
 
 namespace NancyFileUpload.Bootstrapping
 {
@@ -40,7 +40,7 @@ namespace NancyFileUpload.Bootstrapping
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
         {
             // Add the Common Error Handling Pipeline:
-            CustomErrorHandler.Enable(pipelines, container.Resolve<IResponseNegotiator>(), ServiceErrors.GeneralServiceError);
+            CustomErrorHandler.Enable(pipelines, container.Resolve<IResponseNegotiator>(), new GeneralServiceError());
             
             // Make custom registrations:
             configuration.ConfigureRequestContainer(container, pipelines, context);

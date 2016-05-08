@@ -4,7 +4,6 @@
 using FluentValidation;
 using System;
 using System.Collections.Generic;
-using FluentValidation;
 
 namespace NancyFileUpload.Infrastructure.Validation.FluentValidation
 {

@@ -5,7 +5,6 @@ using Nancy;
 using Nancy.Validation;
 using Nancy.ModelBinding;
 using NancyFileUpload.Infrastructure.Exceptions.Validations;
-using NancyFileUpload.Infrastructure.Errors.Specification.Validation;
 
 namespace NancyFileUpload.Infrastructure.Validation.Nancy
 {
@@ -27,7 +26,7 @@ namespace NancyFileUpload.Infrastructure.Validation.Nancy
                 var modelValidationResult = module.Validate(model);
                 if (!modelValidationResult.IsValid)
                 {
-                    throw new ValidationException(new ValidationError(modelValidationResult.Errors));
+                    throw new ValidationServiceErrorException(modelValidationResult);
                 }
             }
         }
