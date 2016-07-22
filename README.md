@@ -14,6 +14,6 @@ curl --verbose --form title="File Title" --form description="File Description" -
 [Nancy]: https://github.com/NancyFx/Nancy
 
 ## Disclaimer ##
-This is an updated fork of the Philip Wagner's excellent file upload example (https://github.com/bytefish/NancyFileUpload) to reflect the latest updates in both Nancy and .NET world.
+This is an updated fork of the Philipp Wagner's excellent file upload example (https://github.com/bytefish/NancyFileUpload) to reflect the latest updates in both Nancy and .NET world.
 
 This code serves only as an example and in *no way* is production ready.
