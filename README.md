@@ -5,10 +5,6 @@ This project shows how to implement file uploads with [Nancy], which is "... a l
 I have used this project to experiment with Validation, Model Binding, Error Handling and Unit Tests with [Nancy]. So the project also shows how to bind complex 
 incoming requests, validate them with FluentValidation, how to provide a custom error handling pipeline and how to implement full unit tests for Nancy modules.
 
-## NancyFileUpload.Web ##
-
-You can use the Console application in ``NancyFileUpload.Web`` to self-host the application.
-
 ## Uploading a File with curl ##
 
 ```

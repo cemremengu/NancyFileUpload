@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NancyFileUpload", "NancyFileUpload\NancyFileUpload.csproj", "{A1AE0B04-ED22-419D-AC35-7322F40AE0FF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7BBD0354-3940-48E8-A26F-071B0F9B9198}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NancyFileUpload.Test", "NancyFileUpload.Test\NancyFileUpload.Test.csproj", "{11C13310-C161-4765-910C-2B6930BC6B9A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6946D1DE-DD66-4741-BEBC-6CDE4D423CB1}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NancyFileUpload.Web", "NancyFileUpload.Web\NancyFileUpload.Web.csproj", "{330B6304-47FC-4C24-850B-34C38DB322A0}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NancyFileUpload", "src\NancyFileUpload\NancyFileUpload.xproj", "{A445971E-E33B-4DF6-8137-B5A4E99DB309}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NancyFileUpload.Test", "src\NancyFileUpload.Test\NancyFileUpload.Test.xproj", "{E9EBC043-0071-44D4-887B-A6D6D181FD99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,20 +20,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A1AE0B04-ED22-419D-AC35-7322F40AE0FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1AE0B04-ED22-419D-AC35-7322F40AE0FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1AE0B04-ED22-419D-AC35-7322F40AE0FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1AE0B04-ED22-419D-AC35-7322F40AE0FF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11C13310-C161-4765-910C-2B6930BC6B9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11C13310-C161-4765-910C-2B6930BC6B9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11C13310-C161-4765-910C-2B6930BC6B9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11C13310-C161-4765-910C-2B6930BC6B9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{330B6304-47FC-4C24-850B-34C38DB322A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{330B6304-47FC-4C24-850B-34C38DB322A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{330B6304-47FC-4C24-850B-34C38DB322A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{330B6304-47FC-4C24-850B-34C38DB322A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A445971E-E33B-4DF6-8137-B5A4E99DB309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A445971E-E33B-4DF6-8137-B5A4E99DB309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A445971E-E33B-4DF6-8137-B5A4E99DB309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A445971E-E33B-4DF6-8137-B5A4E99DB309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9EBC043-0071-44D4-887B-A6D6D181FD99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9EBC043-0071-44D4-887B-A6D6D181FD99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9EBC043-0071-44D4-887B-A6D6D181FD99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9EBC043-0071-44D4-887B-A6D6D181FD99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A445971E-E33B-4DF6-8137-B5A4E99DB309} = {7BBD0354-3940-48E8-A26F-071B0F9B9198}
+		{E9EBC043-0071-44D4-887B-A6D6D181FD99} = {7BBD0354-3940-48E8-A26F-071B0F9B9198}
 	EndGlobalSection
 EndGlobal
